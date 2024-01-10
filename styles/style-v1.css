@@ -201,6 +201,15 @@ a {
     }
 }
 
+@media (min-width: 1000px) {
+    #grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    #grid2 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (min-width: 1500px) {
     #grid {
         grid-template-columns: repeat(4, 1fr);
