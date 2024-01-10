@@ -28,16 +28,6 @@ const gridItems2 = document.querySelectorAll(`.grid-item2`);
 
 // Add source+poster to videos + title to overlays
 
-// gridImgs.forEach(addSrcAndTitle);
-// function addSrcAndTitle(item, index) {
-//     gridImgs[index].src = "poster/z_webp/" + musicvids[index] + ".webp";
-// };
-
-// gridImgs2.forEach(addSrcAndTitle2);
-// function addSrcAndTitle2(item, index) {
-//     gridImgs2[index].src = "poster/z_webp/" + adverts[index] + ".webp";
-// };
-
 gridVids.forEach(addSrcAndTitle);
 function addSrcAndTitle(item, index) {
     gridVids[index].src = "vids/z_medium/360_" + musicvids[index] + ".mp4";
@@ -52,7 +42,19 @@ function addSrcAndTitle(item, index) {
         videoLoaded = true;
     });
     overlays[index].innerHTML = musicvids[index];
-};
+    if (navigator.connection) {
+        // Retrieve the effective connection type
+        var connectionSpeed = navigator.connection.effectiveType;
+        // Check if the effective connection type is slower than 10mbps
+        if (connectionSpeed && connectionSpeed !== "4g") {
+            console.log("nav entered");
+            // Change video source to low-resolution version
+            gridVids[index].src = "vids/z_small/180_" + musicvids[index] + ".mp4";
+            // Update the video element
+            gridVids.load();
+        }
+    };
+}
 
 gridVids2.forEach(addSrcAndTitle2);
 function addSrcAndTitle2(item, index) {
