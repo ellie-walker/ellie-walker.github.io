@@ -70,6 +70,18 @@ function addSrcAndTitle2(item, index) {
         videoLoaded = true;
     });
     overlays2[index].innerHTML = adverts[index];
+    if (navigator.connection) {
+        // Retrieve the effective connection type
+        var connectionSpeed = navigator.connection.effectiveType;
+        // Check if the effective connection type is slower than 10mbps
+        if (connectionSpeed && connectionSpeed !== "4g") {
+            console.log("nav entered");
+            // Change video source to low-resolution version
+            gridVids2[index].src = "vids/z_small/180_" + adverts[index] + ".mp4";
+            // Update the video element
+            gridVids2.load();
+        }
+    };
 };
 
 // Hover
