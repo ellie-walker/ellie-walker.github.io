@@ -58,6 +58,15 @@ gridVids2.forEach(addSrcAndTitle2);
 function addSrcAndTitle2(item, index) {
     gridVids2[index].src = "vids/" + adverts[index] + ".mp4";
     gridVids2[index].poster = "poster/" + adverts[index] + ".jpg";
+    var videoLoaded = false;
+    item.addEventListener('loadedmetadata', function () {
+        if (!videoLoaded) {
+            video.poster = "path/to/your/poster.jpg";
+        }
+    });
+    item.addEventListener('loadeddata', function () {
+        videoLoaded = true;
+    });
     overlays2[index].innerHTML = adverts[index];
 };
 
