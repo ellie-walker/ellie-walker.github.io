@@ -22,7 +22,7 @@ body {
         text-align: center;
     }
 
-    #costume{ 
+    #costume{
         font-size: 14px !important;
         text-align: center;
     }
@@ -115,12 +115,12 @@ body {
         font-size: 18.5px;
         text-align: center;
     }
-    
+
     #stills {
         position: relative;
         padding-left: 100px;
     }
-    
+
     #moving {
         position: relative;
         padding-left: 80px;
@@ -228,14 +228,17 @@ a {
     cursor: pointer;
 }
 
-.grid-item video {
-    position: absolute;
-    width: 100%
-}
-
+.grid-item video,
 .grid-item2 video {
     position: absolute;
-    width: 100%
+    width: 100%;
+}
+
+.grid-item img,
+.grid-item2 img  {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
 }
 
 .overlay {

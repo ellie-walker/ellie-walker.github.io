@@ -28,15 +28,15 @@ const gridItems2 = document.querySelectorAll(`.grid-item2`);
 
 // Add source+poster to videos + title to overlays
 
-gridImgs.forEach(addSrcAndTitle);
-function addSrcAndTitle(item, index) {
-    gridImgs[index].src = "poster/z_webp/" + musicvids[index] + ".webp";
-};
+// gridImgs.forEach(addSrcAndTitle);
+// function addSrcAndTitle(item, index) {
+//     gridImgs[index].src = "poster/z_webp/" + musicvids[index] + ".webp";
+// };
 
-gridImgs2.forEach(addSrcAndTitle2);
-function addSrcAndTitle2(item, index) {
-    gridImgs2[index].src = "poster/z_webp/" + adverts[index] + ".webp";
-};
+// gridImgs2.forEach(addSrcAndTitle2);
+// function addSrcAndTitle2(item, index) {
+//     gridImgs2[index].src = "poster/z_webp/" + adverts[index] + ".webp";
+// };
 
 gridVids.forEach(addSrcAndTitle);
 function addSrcAndTitle(item, index) {
