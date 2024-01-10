@@ -40,12 +40,12 @@ const gridItems2 = document.querySelectorAll(`.grid-item2`);
 
 gridVids.forEach(addSrcAndTitle);
 function addSrcAndTitle(item, index) {
-    gridVids[index].src = "vids/" + musicvids[index] + ".mp4";
+    gridVids[index].src = "vids/z_small/180_" + musicvids[index] + ".mp4";
     gridVids[index].poster = "poster/z_webp/" + musicvids[index] + ".webp";
     var videoLoaded = false;
     item.addEventListener('loadedmetadata', function () {
         if (!videoLoaded) {
-            video.poster = "path/to/your/poster.jpg";
+            item.poster = "poster/z_webp/" + musicvids[index] + ".webp";
         }
     });
     item.addEventListener('loadeddata', function () {
@@ -59,14 +59,6 @@ function addSrcAndTitle2(item, index) {
     gridVids2[index].src = "vids/" + adverts[index] + ".mp4";
     gridVids2[index].poster = "poster/" + adverts[index] + ".jpg";
     var videoLoaded = false;
-    item.addEventListener('loadedmetadata', function () {
-        if (!videoLoaded) {
-            video.poster = "path/to/your/poster.jpg";
-        }
-    });
-    item.addEventListener('loadeddata', function () {
-        videoLoaded = true;
-    });
     overlays2[index].innerHTML = adverts[index];
 };
 
