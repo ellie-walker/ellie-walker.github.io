@@ -42,6 +42,15 @@ gridVids.forEach(addSrcAndTitle);
 function addSrcAndTitle(item, index) {
     gridVids[index].src = "vids/" + musicvids[index] + ".mp4";
     gridVids[index].poster = "poster/z_webp/" + musicvids[index] + ".webp";
+    var videoLoaded = false;
+    item.addEventListener('loadedmetadata', function () {
+        if (!videoLoaded) {
+            video.poster = "path/to/your/poster.jpg";
+        }
+    });
+    item.addEventListener('loadeddata', function () {
+        videoLoaded = true;
+    });
     overlays[index].innerHTML = musicvids[index];
 };
 
