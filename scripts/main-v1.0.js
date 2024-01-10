@@ -4,8 +4,6 @@ const gridItem = document.querySelector(`.grid-item`);
 const gridItem2 = document.querySelector(`.grid-item2`);
 const howManyVids = musicvids.length;
 const howManyVids2 = adverts.length;
-console.log("There are " + howManyVids + " musicvids");
-console.log("There are " + howManyVids2 + " adverts");
 
 // clone 1st grid-item node (with children) x howManyVids and append all clones to grid
 
@@ -14,20 +12,31 @@ for (i = 1; i < howManyVids; i++) {
     grid.appendChild(clone);
 };
 
-const gridVids = document.querySelectorAll(`#grid video`);
-const overlays = document.querySelectorAll(`.overlay`);
-const gridItems = document.querySelectorAll(`.grid-item`);
-
 for (i = 1; i < howManyVids2; i++) {
     let clone2 = gridItem2.cloneNode(true);
     grid2.appendChild(clone2);
 };
 
+const gridVids = document.querySelectorAll(`#grid video`);
 const gridVids2 = document.querySelectorAll(`#grid2 video`);
+const gridImgs = document.querySelectorAll(`#grid img`);
+const gridImgs2 = document.querySelectorAll(`#grid img`);
+const overlays = document.querySelectorAll(`.overlay`);
 const overlays2 = document.querySelectorAll(`.overlay2`);
+const gridItems = document.querySelectorAll(`.grid-item`);
 const gridItems2 = document.querySelectorAll(`.grid-item2`);
 
 // Add source+poster to videos + title to overlays
+
+gridImgs.forEach(addSrcAndTitle);
+function addSrcAndTitle(item, index) {
+    gridImgs[index].src = "poster/z_webp/" + musicvids[index] + ".webp";
+};
+
+gridImgs2.forEach(addSrcAndTitle2);
+function addSrcAndTitle2(item, index) {
+    gridImgs2[index].src = "poster/z_webp/" + adverts[index] + ".webp";
+};
 
 gridVids.forEach(addSrcAndTitle);
 function addSrcAndTitle(item, index) {
