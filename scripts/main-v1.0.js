@@ -40,17 +40,7 @@ const gridItems2 = document.querySelectorAll(`.grid-item2`);
 
 gridVids.forEach(addSrcAndTitle);
 function addSrcAndTitle(item, index) {
-    // gridVids[index].src = "vids/z_small/180_" + musicvids[index] + ".mp4";
-    var source1 = document.createElement('source');
-    source1.src = "vids/z_small/180_" + musicvids[index] + ".mp4";
-    source1.type = 'video/mp4';
-    source1.id = 'lores';
-    var source2 = document.createElement('source');
-    source2.src = "vids/z_medium/360_" + musicvids[index] + ".mp4";
-    source2.type = 'video/mp4';
-    source2.id = 'hires';
-    item.appendChild(source1);
-    item.appendChild(source2);
+    gridVids[index].src = "vids/z_medium/360_" + musicvids[index] + ".mp4";
     gridVids[index].poster = "poster/z_webp/" + musicvids[index] + ".webp";
     var videoLoaded = false;
     item.addEventListener('loadedmetadata', function () {
@@ -62,25 +52,21 @@ function addSrcAndTitle(item, index) {
         videoLoaded = true;
     });
     overlays[index].innerHTML = musicvids[index];
-    const sourceLo = document.getElementById('lores');
-    const sourceHi = document.getElementById('hires');
-    // Listen for 'canplaythrough' event on the lower quality sources
-    sourceLo.addEventListener('canplaythrough', switchToHigherQuality);
-    function switchToHigherQuality() {
-        console.log('src lo can playthrough');
-      if (sourceHi.src && sourceHi.readyState >= 3) {
-        item.src = sourceHi.src;
-        item.load();
-        item.play();
-      }
-    }
 };
 
 gridVids2.forEach(addSrcAndTitle2);
 function addSrcAndTitle2(item, index) {
-    gridVids2[index].src = "vids/" + adverts[index] + ".mp4";
+    gridVids2[index].src = "vids/z_medium/360_" + adverts[index] + ".mp4";
     gridVids2[index].poster = "poster/" + adverts[index] + ".jpg";
     var videoLoaded = false;
+    item.addEventListener('loadedmetadata', function () {
+        if (!videoLoaded) {
+            item.poster = "poster/z_webp/" + adverts[index] + ".webp";
+        }
+    });
+    item.addEventListener('loadeddata', function () {
+        videoLoaded = true;
+    });
     overlays2[index].innerHTML = adverts[index];
 };
 
