@@ -70,7 +70,7 @@ button {
     }
 }
 
-@media (min-width: 1001px) {
+@media (min-width: 1150px) {
     #screen video {
         width: 1001px;
     }

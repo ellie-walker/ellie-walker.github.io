@@ -1,16 +1,28 @@
-// ARROW KEYS 
+// ARROW KEYS
 
 document.addEventListener('keydown', e => {
     if (e.code.startsWith('Arrow')) {
-        switch (e.code) {
-            case 'ArrowLeft':
-                prevFn(e);
-                prevFn2(e);
-                break;
-            case 'ArrowRight':
-                nextFn(e);
-                nextFn2(e);
-                break;
+        if (modalisopen == true)
+        {
+            switch (e.code) {
+                case 'ArrowLeft':
+                    prevFn(e);
+                    break;
+                case 'ArrowRight':
+                    nextFn(e);
+                    break;
+            }
+        }
+        else if (modal2isopen == true)
+        {
+            switch (e.code) {
+                case 'ArrowLeft':
+                    prevFn2(e);
+                    break;
+                case 'ArrowRight':
+                    nextFn2(e);
+                    break;
+            }
         }
     }
 });

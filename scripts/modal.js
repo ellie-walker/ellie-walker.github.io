@@ -4,7 +4,7 @@ const screen = document.querySelector(`#screen`);
 const modalVideo = document.querySelector(`#screen video`);
 const caption = document.querySelector(`#caption`);
 
-// clone 1st video node x howManyVids and append all clones to screen 
+// clone 1st video node x howManyVids and append all clones to screen
 for (i = 1; i < howManyVids; i++) {
     let modalClone = modalVideo.cloneNode();
     screen.appendChild(modalClone);
@@ -27,26 +27,35 @@ function hidePauseAll() {
     });
 }
 
-// open modal on video click 
-let currentVid=0;
+// open modal on video click
+let currentVid = 0;
 function showVid(item) {
     item.classList.remove(`hide`);
     item.classList.add(`show`);
 }
 
+let modalisopen = false;
+
 overlays.forEach(modalOnClick);
 function modalOnClick(item, index) {
     item.addEventListener(`click`, () => {
-        let smallScreen = window.matchMedia(`(max-width: 700px)`);
-        // if (isTouchDevice && smallScreen.matches) return;
-        modal.classList.remove(`hide`);
-        modal.classList.add(`show`);
-        hidePauseAll();
-        currentVid = index;
-        showVid(modalVids[index]);
-        updateScreenSize();
-        modalVids[index].play();
-        caption.innerHTML = musicvids[currentVid];
+        if (/(iPhone|iPad|iPod|Android)/i.test(navigator.userAgent)) {
+            console.log("mobile");
+            window.location.href = modalVids[index].src;
+        }
+        else {
+            console.log("desktop");
+            modalisopen = true;
+            let smallScreen = window.matchMedia(`(max-width: 700px)`);
+            modal.classList.remove(`hide`);
+            modal.classList.add(`show`);
+            hidePauseAll();
+            currentVid = index;
+            showVid(modalVids[index]);
+            updateScreenSize();
+            modalVids[index].play();
+            caption.innerHTML = musicvids[currentVid];
+        }
     });
 }
 
@@ -57,6 +66,7 @@ function closeFn() {
     modal.classList.remove(`show`);
     modal.classList.add(`hide`);
     hidePauseAll();
+    modalisopen = false;
 };
 
 // prev + next buttons

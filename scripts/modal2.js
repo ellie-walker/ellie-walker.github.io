@@ -4,7 +4,7 @@ const screen2 = document.querySelector(`#screen2`);
 const modalVideo2 = document.querySelector(`#screen2 video`);
 const caption2 = document.querySelector(`#caption2`);
 
-// clone 1st video node x howManyVids and append all clones to screen 
+// clone 1st video node x howManyVids and append all clones to screen
 for (i = 1; i < howManyVids2; i++) {
     let modalClone2 = modalVideo2.cloneNode();
     screen2.appendChild(modalClone2);
@@ -27,26 +27,36 @@ function hidePauseAll2() {
     });
 }
 
-// open modal on video click 
-let currentVid2=0;
+// open modal on video click
+let currentVid2 = 0;
 function showVid2(item) {
     item.classList.remove(`hide`);
     item.classList.add(`show`);
 }
 
+let modal2isopen = false;
+
 overlays2.forEach(modalOnClick2);
 function modalOnClick2(item, index) {
     item.addEventListener(`click`, () => {
-        let smallScreen2 = window.matchMedia(`(max-width: 700px)`);
-        // if (isTouchDevice && smallScreen.matches) return;
-        modal2.classList.remove(`hide`);
-        modal2.classList.add(`show`);
-        hidePauseAll2();
-        currentVid2 = index;
-        showVid2(modalVids2[index]);
-        updateScreenSize2();
-        modalVids2[index].play();
-        caption2.innerHTML = adverts[currentVid2];
+        if (/(iPhone|iPad|iPod|Android)/i.test(navigator.userAgent)) {
+            console.log("mobile");
+            window.location.href = modalVids2[index].src;
+        }
+        else {
+            console.log("desktop");
+            modal2isopen = true;
+            let smallScreen2 = window.matchMedia(`(max-width: 700px)`);
+            // if (isTouchDevice && smallScreen.matches) return;
+            modal2.classList.remove(`hide`);
+            modal2.classList.add(`show`);
+            hidePauseAll2();
+            currentVid2 = index;
+            showVid2(modalVids2[index]);
+            updateScreenSize2();
+            modalVids2[index].play();
+            caption2.innerHTML = adverts[currentVid2];
+        }
     });
 }
 
@@ -57,6 +67,7 @@ function closeFn2() {
     modal2.classList.remove(`show`);
     modal2.classList.add(`hide`);
     hidePauseAll2();
+    modal2isopen = false;
 };
 
 // prev + next buttons
