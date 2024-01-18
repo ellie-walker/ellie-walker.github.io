@@ -1,3 +1,13 @@
+----Fixing "Chrome remembers" bug---
+
+Tested:
+- rename index.html to index2.html, push, rename back to index.html, push
+-  
+
+
+
+
+
 Ellie Walker Video Gallery
 
 Brief:
